@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vision Get them Young Quiz</title>
+
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia|Roboto|Montserrat">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- jquery cdn -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <!--Favicon-->
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon.png">
+    <!--Remix icons-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- Bootstrap css-->
+    
+    <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">-->
+    <!-- Swiper.js styles -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+    <!--custom styles-->
+    <link rel="stylesheet" href="main.css">
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/9.9.2/firebase-app-compat.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/9.9.2/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/9.9.2/firebase-database-compat.js"></script>
+    <script defer src="/__/firebase/9.9.2/firebase-firestore-compat.js"></script>
+    <script defer src="/__/firebase/9.9.2/firebase-functions-compat.js"></script>
+    <script defer src="/__/firebase/9.9.2/firebase-messaging-compat.js"></script>
+    <script defer src="/__/firebase/9.9.2/firebase-storage-compat.js"></script>
+    <script defer src="/__/firebase/9.9.2/firebase-analytics-compat.js"></script>
+    <script defer src="/__/firebase/9.9.2/firebase-remote-config-compat.js"></script>
+    <script defer src="/__/firebase/9.9.2/firebase-performance-compat.js"></script>
+    <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+
+    
+  </head>
+  <body>
+              
+        <aside>
+          <h1 class="sm-notice">
+              😨<br>
+              This Computer Based Test is only available for PCs and MacBook.<br>
+              Please switch to a Laptop or Destop to start the Quiz.<br>
+              Thanks for understanding
+          </h1>
+        </aside>
+
+        <main>
+
+          <section class="login-page">
+              <img src="./get them young.jpg" alt="">
+              <h1 class="title">Hello there!</h1>
+              <h2 class="classRoom">Can you tell me your name before you start?</h2>
+
+              <div class="name-signUp">
+                  <h3>Your Name</h3>
+                  <input class="text" id="login-name" type="text">
+                  <input class="submit" id="login-submit" type="submit" disabled>
+              </div>
+              <p id="login-alert">Fill in Your name Full name first before you proceed*</p>
+          </section>
+
+          <section class="home">
+              <h2 class="cbt">Computer Based Test</h2>
+              <img src="./get them young.jpg" height="70px" width="70px" alt="">
+              <h1 class="title"></h1>
+              <h2 class="sub-title">Subject: General Computer Studies</h2>
+              <div class="instructions">
+
+                  <div class="time-instruct">
+                      <span class="time-title">Duration:</span>
+                      <span class="time">20 Minutes</span>
+                  </div>
+                  <div class="descript-instruct">
+                      <ul>
+                          <li id="answer-all">Answer all Questions</li>
+                          <li>
+                              Remember to finish each question before timer is over.<br>
+                              Quiz closes after the timer ends.<br>
+                              You have only but <span>20 Minutes</span> for this Exam.
+                          </li>
+                          <li> Make sure you submit your question when you are done</li>
+                      </ul>
+                  </div>
+              </div>
+              <button class="start" id="start-quiz">Start</button>
+              
+          
+          </section>
+
+          <section class="Questions">
+
+              <div class="timer">
+                  
+                  <div class="timer-num">
+                      <p>Time: </p>
+                      <h1 id="countDown">
+                          19 : 00
+                      </h1>
+                      
+                  </div>
+                  
+              </div>
+
+              <ul class="nav">
+                  <li class="active" data-cont="r1">1</li>
+                  <li data-cont="r2">2</li>
+                  <li data-cont="r3">3</li>
+                  <li data-cont="r4">4</li>
+                  <li data-cont="r5">5</li>
+                  <li data-cont="r6">6</li>
+                  <li data-cont="r7">7</li>
+                  <li data-cont="r8">8</li>
+                  <li data-cont="r9">9</li>
+                  <li data-cont="r10">10</li>
+                  <li data-cont="r11">11</li>
+                  <li data-cont="r12">12</li>
+                  <li data-cont="r13">13</li>
+                  <li data-cont="r14">14</li>
+                  <li data-cont="r15">15</li>
+                  <li data-cont="r16">16</li>
+                  <li data-cont="r17">17</li>
+                  <li data-cont="r18">18</li>
+                  <li data-cont="r19">19</li>
+                  <li data-cont="r20">20</li>
+              </ul>
+
+
+              <div class="question question-box-1 active" id="question-box-1">
+                  
+                  <div class="number">
+                      <h1 class="q-num">
+                          1
+                      </h1>
+                  </div>
+                  
+                  <input type="text" class="q-input" id="q-input-1" value="">
+                  
+
+                  <h2 class="q-ask">
+                      What is the full meaning of GSM
+                  </h2>
+
+
+                  <div class="options">
+
+                      <div class="option options-1">
+                          <input type="radio" class="radio no" name="question-1" value="0" id="option-1"><h3>Globile system for Mobilation</h3>
+                      </div>
+                      <div class="option options-1">
+                          <input type="radio" class="radio yes" name="question-1" value="1" id="option-2-1"><h3>Global System for Mobile Communication</h3>
+                      </div>
+                      <div class="option options-1">
+                          <input type="radio" class="radio no" name="question-1" value="0" id="option-3"><h3>Global system Mobile</h3>
+                      </div>
+                      <div class="option options-1">
+                          <input type="radio" class="radio no" name="question-1" value="0" id="option-4"><h3>Global sector for Mobile Communication</h3>
+                      </div>
+                  </div>
+              </div>
+
+              
+              <div class="question question-box-2" id="question-box-2">
+                  
+                  <div class="number">
+                      <h1 class="q-num">
+                          2
+                      </h1>
+                  </div>
+                  
+                  <input type="text" class="q-input" id="q-input-2" value="">
+
+                  <h2 class="q-ask">
+                      Which of these is the definition of Information
+                  </h2>
+
+                  <div class="options">
+
+                      <div class="option options-2">
+                          <input type="radio" class="radio" name="question-2" value="0" id="option-1"><h3>Information is a processed letter</h3>
+                      </div>
+                      <div class="option options-2">
+                          <input type="radio" class="radio" name="question-2" value="0" id="option-2"><h3>Information is a processed sound</h3>
+                      </div>
+                      <div class="option options-2">
+                          <input type="radio" class="radio" name="question-2" value="1" id="option-3"><h3>Information is a processed data</h3>
+                      </div>
+                      <div class="option options-2">
+                          <input type="radio" class="radio" name="question-2" value="0" id="option-4"><h3>Information is a processed technology</h3>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="question question-box-3" id="question-box-3">
+                  
+                  <div class="number">
+                      <h1 class="q-num">
+                          3
+                      </h1>
+                  </div>
+                  
+                  <input type="text" class="q-input" id="q-input-3" value="">
+
+                  <h2 class="q-ask">
+                      The full meaning of ICT is
+                  </h2>
+
+                  <div class="options">
+
+                      <div class="option options-3">
+                          <input type="radio" class="radio" name="question-3" value="1" id="option-1"><h3>Information and Communication Technology</h3>
+                      </div>
+                      <div class="option options-3">
+                          <input type="radio" class="radio" name="question-3" value="0" id="option-2"><h3>Information and Count Technology</h3>
+                      </div>
+                      <div class="option options-3">
+                          <input type="radio" class="radio" name="question-3" value="0" id="option-3"><h3>Internal and Communication Technology</h3>
+                      </div>
+                      <div class="option options-3">
+                          <input type="radio" class="radio" name="question-3" value="0" id="option-4"><h3>Information and Communication Technical Issues</h3>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="question question-box-4" id="question-box-4">
+                  
+                  <div class="number">
+                      <h1 class="q-num">
+                          4
+                      </h1>
+                  </div>
+                  
+                  <input type="text" class="q-input" id="q-input-4" value="">
+
+                  <h2 class="q-ask">
+                      The word <span class="important">Tele</span>  means
+                  </h2>
+
+                  <div class="options">
+
+                      <div class="option options-4">
+                          <input type="radio" class="radio" name="question-4" value="0" id="option-1"><h3>Technology</h3>
+                      </div>
+                      <div class="option options-4">
+                          <input type="radio" class="radio" name="question-4" value="1" id="option-2"><h3>Distance</h3>
+                      </div>
+                      <div class="option options-4">
+                          <input type="radio" class="radio" name="question-4" value="0" id="option-3"><h3>Communication</h3>
+                      </div>
+                      <div class="option options-4">
+                          <input type="radio" class="radio" name="question-4" value="0" id="option-4"><h3>Telephone</h3>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="question question-box-5" id="question-box-5">
+                  
+                  <div class="number">
+                      <h1 class="q-num">
+                          5
+                      </h1>
+                  </div>
+                  
+                  <input type="text" class="q-input" id="q-input-5" value="">
+
+                  <h2 class="q-ask">
+                      Which of these is not a form of Information
+                  </h2>
+
+                  <div class="options">
+
+                      <div class="option options-5">
+                          <input type="radio" class="radio" name="question-5" value="1" id="option-1"><h3>Counting</h3>
+                      </div>
+                      <div class="option options-5">
+                          <input type="radio" class="radio" name="question-5" value="0" id="option-2"><h3>Text</h3>
+                      </div>
+                      <div class="option options-5">
+                          <input type="radio" class="radio" name="question-5" value="0" id="option-3"><h3>Audio</h3>
+                      </div>
+                      <div class="option options-5">
+                          <input type="radio" class="radio" name="question-5" value="0" id="option-4"><h3>Visual</h3>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="question question-box-6" id="question-box-6">
+                  
+                  <div class="number">
+                      <h1 class="q-num">
+                          6
+                      </h1>
+                  </div>
+                  
+                  <input type="text" class="q-input" id="q-input-6" value="">
+
+                  <h2 class="q-ask">
+                      Which of this is not an importance of ICT
+                  </h2>
+
+                  <div class="options">
+
+                      <div class="option options-6">
+                          <input type="radio" class="radio" name="question-6" value="1" id="option-1"><h3>Theft</h3>
+                      </div>
+                      <div class="option options-6">
+                          <input type="radio" class="radio" name="question-6" value="0" id="option-2"><h3>Employment</h3>
+                      </div>
+                      <div class="option options-6">
+                          <input type="radio" class="radio" name="question-6" value="0" id="option-3"><h3>Education</h3>
+                      </div>
+                      <div class="option options-6">
+                          <input type="radio" class="radio" name="question-6" value="0" id="option-4"><h3>Communication</h3>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="question question-box-7" id="question-box-7">
+                  
+                  <div class="number">
+                      <h1 class="q-num">
+                          7
+                      </h1>
+                  </div>
+                  
+                  <input type="text" class="q-input" id="q-input-7" value="">
+
+                  <h2 class="q-ask">
+                      The situation whereby people with the use of Communication gadgets, meet together in a meeting or conference without physically gathering at
+                      the same location is called
+                  </h2>
+
+                  <div class="options">
+
+                      <div class="option options-7">
+                          <input type="radio" class="radio" name="question-7" value="0" id="option-1"><h3>Addiction</h3>
+                      </div>
+                      <div class="option options-7">
+                          <input type="radio" class="radio" name="question-7" value="1" id="option-2"><h3>Teleconferencing</h3>
+                      </div>
+                      <div class="option options-7">
+                          <input type="radio" class="radio" name="question-7" value="0" id="option-3"><h3>Spamming</h3>
+                      </div>
+                      <div class="option options-7">
+                          <input type="radio" class="radio" name="question-7" value="0" id="option-4"><h3>Fraud</h3>
+                      </div>
+                  </div>
+              </div>
+
+
+              <div class="question question-box-8" id="question-box-8">
+                  
+                  <div class="number">
+                      <h1 class="q-num">
+                          8
+                      </h1>
+                  </div>
+                  
+                  <input type="text" class="q-input" id="q-input-8" value="">
+
+                  <h2 class="q-ask">
+                      Which of this is a use of IT at Home
+                  </h2>
+
+                  <div class="options">
+
+                      <div class="option options-8">
+                          <input type="radio" class="radio" name="question-8" value="0" id="option-1"><h3>Stealing of goods Online</h3>
+                      </div>
+                      <div class="option options-8">
+                          <input type="radio" class="radio" name="question-8" value="1" id="option-2"><h3>For Internet Purpose</h3>
+                      </div>
+                      <div class="option options-8">
+                          <input type="radio" class="radio" name="question-8" value="0" id="option-3"><h3>Online Bullying</h3>
+                      </div>
+                      <div class="option options-8">
+                          <input type="radio" class="radio" name="question-8" value="0" id="option-4"><h3>Selling of Fake goods</h3>
+                      </div>
+                  </div>
+              </div>
+
+
+              <div class="question question-box-9" id="question-box-9">
+                  
+                  <div class="number">
+                      <h1 class="q-num">
+                          9
+                      </h1>
+                  </div>
+                  
+                  <input type="text" class="q-input" id="q-input-9" value="">
+
+                  <h2 class="q-ask">
+                      Which of these is not a negative impact of ICT to the society
+                  </h2>
+
+                  <div class="options">
+
+                      <div class="option options-9">
+                          <input type="radio" class="radio" name="question-9" value="0" id="option-1"><h3>Threat to World Peace</h3>
+                      </div>
+                      <div class="option options-9">
+                          <input type="radio" class="radio" name="question-9" value="0" id="option-2"><h3>Addiction</h3>
+                      </div>
+                      <div class="option options-9">
+                          <input type="radio" class="radio" name="question-9" value="1" id="option-3"><h3>E-Learning</h3>
+                      </div>
+                      <div class="option options-9">
+                          <input type="radio" class="radio" name="question-9" value="0" id="option-4"><h3>Stealing of goods online</h3>
+                      </div>
+                  </div>
+              </div>
+
+
+              <div class="question question-box-10" id="question-box-10">
+                  
+                  <div class="number">
+                      <h1 class="q-num">
+                          10
+                      </h1>
+                  </div>
+                  
+                  <input type="text" class="q-input" id="q-input-10"  value="">
+
+                  <h2 class="q-ask">
+                      The transfer of messages from a sender to a receiver through a common Channel is
+                  </h2>
+
+                  <div class="options">
+
+                      <div class="option options-10">
+                          <input type="radio" class="radio" name="question-10" value="0" id="option-1"><h3>Touch Screens</h3>
+                      </div>
+                      <div class="option options-10">
+                          <input type="radio" class="radio" name="question-10" value="0" id="option-2"><h3>Media</h3>
+                      </div>
+                      <div class="option options-10">
+                          <input type="radio" class="radio" name="question-10" value="0" id="option-3"><h3>Employment</h3>
+                      </div>
+                      <div class="option options-10">
+                          <input type="radio" class="radio" name="question-10" value="1" id="option-4"><h3>Information Transmission</h3>
+                      </div>
+                  </div>
+
+          
+              </div>
+
+
+              <div class="question question-box-11" id="question-box-11">
+                  
+                  <div class="number">
+                      <h1 class="q-num">
+                          11
+                      </h1>
+                  </div>
+                  
+                  <input type="text" class="q-input" id="q-input-11"  value="">
+
+                  <h2 class="q-ask">
+                      Which of these is a means of transmitting information
+                  </h2>
+
+                  <div class="options">
+
+                      <div class="option options-11">
+                          <input type="radio" class="radio" name="question-11" value="0" id="option-1"><h3>Fast means</h3>
+                      </div>
+                      <div class="option options-11">
+                          <input type="radio" class="radio" name="question-11" value="1" id="option-2"><h3>Electronic means</h3>
+                      </div>
+                      <div class="option options-11">
+                          <input type="radio" class="radio" name="question-11" value="0" id="option-3"><h3>Early means</h3>
+                      </div>
+                      <div class="option options-11">
+                          <input type="radio" class="radio" name="question-11" value="0" id="option-4"><h3>Top means</h3>
+                      </div>
+                  </div>
+
+          
+              </div>
+
+
+              <div class="question question-box-12" id="question-box-12">
+                  
+                  <div class="number">
+                      <h1 class="q-num">
+                          12
+                      </h1>
+                  </div>
+                  
+                  <input type="text" class="q-input" id="q-input-12"  value="">
+
+                  <h2 class="q-ask">
+                      Which is the other means of Information Transmission
+                  </h2>
+
+                  <div class="options">
+
+                      <div class="option options-12">
+                          <input type="radio" class="radio" name="question-12" value="0" id="option-1"><h3>Slow means</h3>
+                      </div>
+                      <div class="option options-12">
+                          <input type="radio" class="radio" name="question-12" value="1" id="option-2"><h3>Non-Electronic means</h3>
+                      </div>
+                      <div class="option options-12">
+                          <input type="radio" class="radio" name="question-12" value="0" id="option-3"><h3>Late means</h3>
+                      </div>
+                      <div class="option options-12">
+                          <input type="radio" class="radio" name="question-12" value="0" id="option-4"><h3>Bottom means</h3>
+                      </div>
+                  </div>
+
+          
+              </div>
+
+
+              <div class="question question-box-13" id="question-box-13">
+                  
+                  <div class="number">
+                      <h1 class="q-num">
+                          13
+                      </h1>
+                  </div>
+                  
+                  <input type="text" class="q-input" id="q-input-13"  value="">
+
+                  <h2 class="q-ask">
+                      The way of transmitting information through Electronic Media is the
+                  </h2>
+
+                  <div class="options">
+
+                      <div class="option options-13">
+                          <input type="radio" class="radio" name="question-13" value="1" id="option-1"><h3>Electronic Means</h3>
+                      </div>
+                      <div class="option options-13">
+                          <input type="radio" class="radio" name="question-13" value="0" id="option-2"><h3>Slow Means</h3>
+                      </div>
+                      <div class="option options-13">
+                          <input type="radio" class="radio" name="question-13" value="0" id="option-3"><h3>Early means</h3>
+                      </div>
+                      <div class="option options-13">
+                          <input type="radio" class="radio" name="question-13" value="0" id="option-4"><h3>Fast means</h3>
+                      </div>
+                  </div>
+
+          
+              </div>
+
+
+              <div class="question question-box-14" id="question-box-14">
+                  
+                  <div class="number">
+                      <h1 class="q-num">
+                          14
+                      </h1>
+                  </div>
+                  
+                  <input type="text" class="q-input" id="q-input-14"  value="">
+
+                  <h2 class="q-ask">
+                      Which of thses is not an Electronic means of Information Transmission 
+                  </h2>
+
+                  <div class="options">
+
+                      <div class="option options-14">
+                          <input type="radio" class="radio" name="question-14" value="0" id="option-1"><h3>Radio</h3>
+                      </div>
+                      <div class="option options-14">
+                          <input type="radio" class="radio" name="question-14" value="0" id="option-2"><h3>Television</h3>
+                      </div>
+                      <div class="option options-14">
+                          <input type="radio" class="radio" name="question-14" value="0" id="option-3"><h3>Computer</h3>
+                      </div>
+                      <div class="option options-14">
+                          <input type="radio" class="radio" name="question-14" value="1" id="option-4"><h3>Writing</h3>
+                      </div>
+                  </div>
+
+          
+              </div>
+
+
+              <div class="question question-box-15" id="question-box-15">
+                  
+                  <div class="number">
+                      <h1 class="q-num">
+                          15
+                      </h1>
+                  </div>
+                  
+                  <input type="text" class="q-input" id="q-input-15"  value="">
+
+                  <h2 class="q-ask">
+                      Which of this is a method of Information Transmission
+                  </h2>
+
+                  <div class="options">
+
+                      <div class="option options-15">
+                          <input type="radio" class="radio" name="question-15" value="0" id="option-1"><h3>Slow Method</h3>
+                      </div>
+                      <div class="option options-15">
+                          <input type="radio" class="radio" name="question-15" value="0" id="option-2"><h3>Electronic method</h3>
+                      </div>
+                      <div class="option options-15">
+                          <input type="radio" class="radio" name="question-15" value="1" id="option-3"><h3>Ancient Method</h3>
+                      </div>
+                      <div class="option options-15">
+                          <input type="radio" class="radio" name="question-15" value="0" id="option-4"><h3>Fast Method</h3>
+                      </div>
+                  </div>
+
+          
+              </div>
+
+
+              <div class="question question-box-16" id="question-box-16">
+                  
+                  <div class="number">
+                      <h1 class="q-num">
+                          16
+                      </h1>
+                  </div>
+                  
+                  <input type="text" class="q-input" id="q-input-16"  value="">
+
+                  <h2 class="q-ask">
+                      The second method of Information Transmission is
+                  </h2>
+
+                  <div class="options">
+
+                      <div class="option options-16">
+                          <input type="radio" class="radio" name="question-16" value="0" id="option-1"><h3>Technology Method</h3>
+                      </div>
+                      <div class="option options-16">
+                          <input type="radio" class="radio" name="question-16" value="0" id="option-2"><h3>Fast Method</h3>
+                      </div>
+                      <div class="option options-16">
+                          <input type="radio" class="radio" name="question-16" value="1" id="option-3"><h3>Mordern Method</h3>
+                      </div>
+                      <div class="option options-16">
+                          <input type="radio" class="radio" name="question-16" value="0" id="option-4"><h3>Media Method</h3>
+                      </div>
+                  </div>
+
+          
+              </div>
+
+
+              <div class="question question-box-17" id="question-box-17">
+                  
+                  <div class="number">
+                      <h1 class="q-num">
+                          17
+                      </h1>
+                  </div>
+                  
+                  <input type="text" class="q-input" id="q-input-17"  value="">
+
+                  <h2 class="q-ask">
+                      Examples of Ancient method includes all except
+                  </h2>
+
+                  <div class="options">
+
+                      <div class="option options-17">
+                          <input type="radio" class="radio" name="question-17" value="0" id="option-1"><h3>Oral tradition</h3>
+                      </div>
+                      <div class="option options-17">
+                          <input type="radio" class="radio" name="question-17" value="1" id="option-2"><h3>GSM</h3>
+                      </div>
+                      <div class="option options-17">
+                          <input type="radio" class="radio" name="question-17" value="0" id="option-3"><h3>The Smoke Signal</h3>
+                      </div>
+                      <div class="option options-17">
+                          <input type="radio" class="radio" name="question-17" value="0" id="option-4"><h3>Town Crier</h3>
+                      </div>
+                  </div>
+
+          
+              </div>
+
+
+              <div class="question question-box-18" id="question-box-18">
+                  
+                  <div class="number">
+                      <h1 class="q-num">
+                          18
+                      </h1>
+                  </div>
+                  
+                  <input type="text" class="q-input" id="q-input-18"  value="">
+
+                  <h2 class="q-ask">
+                      The Mordern Method of Information Transmission include
+                  </h2>
+
+                  <div class="options">
+
+                      <div class="option options-18">
+                          <input type="radio" class="radio" name="question-18" value="1" id="option-1"><h3>Computerized Method</h3>
+                      </div>
+                      <div class="option options-18">
+                          <input type="radio" class="radio" name="question-18" value="0" id="option-2"><h3>Oral Method</h3>
+                      </div>
+                      <div class="option options-18">
+                          <input type="radio" class="radio" name="question-18" value="0" id="option-3"><h3>Stone age method</h3>
+                      </div>
+                      <div class="option options-18">
+                          <input type="radio" class="radio" name="question-18" value="0" id="option-4"><h3>Stick Method</h3>
+                      </div>
+                  </div>
+
+          
+              </div>
+
+
+              <div class="question question-box-19" id="question-box-19">
+                  
+                  <div class="number">
+                      <h1 class="q-num">
+                          19
+                      </h1>
+                  </div>
+                  
+                  <input type="text" class="q-input" id="q-input-19"  value="">
+
+                  <h2 class="q-ask">
+                      These are mordern method of Information transmission except
+                  </h2>
+
+                  <div class="options">
+
+                      <div class="option options-19">
+                          <input type="radio" class="radio" name="question-19" value="1" id="option-1"><h3>The sign on the Rock method</h3>
+                      </div>
+                      <div class="option options-19">
+                          <input type="radio" class="radio" name="question-19" value="0" id="option-2"><h3>Printing</h3>
+                      </div>
+                      <div class="option options-19">
+                          <input type="radio" class="radio" name="question-19" value="0" id="option-3"><h3>Radio</h3>
+                      </div>
+                      <div class="option options-19">
+                          <input type="radio" class="radio" name="question-19" value="0" id="option-4"><h3>Television</h3>
+                      </div>
+                  </div>
+
+          
+              </div>
+
+
+              <div class="question question-box-20" id="question-box-20">
+                  
+                  <div class="number">
+                      <h1 class="q-num">
+                          20
+                      </h1>
+                  </div>
+                  
+                  <input type="text" class="q-input" id="q-input-20"  value="">
+
+                  <h2 class="q-ask">
+                      The most Important and Widely Used mordern method of transmitting Information is
+                  </h2>
+
+                  <div class="options">
+
+                      <div class="option options-20">
+                          <input type="radio" class="radio" name="question-20" value="0" id="option-1"><h3>Telephone</h3>
+                      </div>
+                      <div class="option options-20">
+                          <input type="radio" class="radio" name="question-20" value="0" id="option-2"><h3>Computer</h3>
+                      </div>
+                      <div class="option options-20">
+                          <input type="radio" class="radio" name="question-20" value="0" id="option-3"><h3>Radio</h3>
+                      </div>
+                      <div class="option options-20">
+                          <input type="radio" class="radio" name="question-20" value="1" id="option-4"><h3>Writing</h3>
+                      </div>
+                  </div>
+
+          
+              </div>
+
+              <div class="prev-next">
+
+                  <button class="previous disabled" id="previous">Prev</button>
+
+                  <div>
+                      <button class="next" id="next">Next</button>
+                      <button class="start" id="start-submit">submit</button>
+                  </div>
+              </div>
+
+
+              
+          </section>
+
+
+          <section class="submit-request">
+              <h1>
+                  Are You Sure you would like<br>
+                  to submit?
+              </h1>
+
+              <p>😨</p>
+
+              <div class="submit-yes-no">
+                  <button id="submit-no">No</button>
+                  <button id="submit-yes">Yes</button>
+              </div>
+          </section>
+
+          <section class="result">
+
+            <div>
+              <i class="ri-check-double-fill rotate"></i>
+            </div>
+
+            <div>
+              <h3 id="submitted">Submitted</h3>
+            </div>
+
+            <div>
+              <h2 id="users-name">Joy Kpadobi</h2>
+            </div>
+
+            <div>
+              <h3 id="score-note">
+                You Scored <input type="text" id="score" disabled > out of <span id="total">20</span>
+            </h3>
+            </div>
+          </section>
+        </main>
+
+
+
+          <!--swiper.js-->
+          <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
+          <!--bootstap js  -->
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+
+          <!--custom script-->
+          <script src="script.js"></script>
+
+          <!-- load in jquery script to use jquery -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+  </body>
+</html>
